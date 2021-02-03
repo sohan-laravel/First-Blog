@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRegistration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class indexController extends Controller
 {
@@ -22,14 +24,28 @@ class indexController extends Controller
         return view('frontend.auth.register');
     }
 
-    public function userRegistration(Request $request)
+    public function userRegistration(UserRegistration $request)
     {
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'password' => 'required|min:6'
-        ]);
 
-        return $request;
+        // New system validation process craete request class
+
+
+        // $rules = [
+        //     'name' => 'required|string',
+        //     'email' => 'required|email',
+        //     'password' => 'required|min:6'
+        // ];
+
+        // // $request->validate($rules);
+
+        // $validator = Validator::make($request->all(), $rules);
+
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+
+        session()->flash('message', 'User Registration Successfully !..');
+
+        return redirect()->back();
     }
 }
