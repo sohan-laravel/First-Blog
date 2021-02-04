@@ -26,7 +26,7 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('showRegistrationForm') }}">Register</a>
+                    <a class="nav-link" href="{{ route('user.showRegistrationForm') }}">Register</a>
                 </li>
             </ul>
         </div>

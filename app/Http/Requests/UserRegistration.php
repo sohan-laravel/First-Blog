@@ -27,7 +27,8 @@ class UserRegistration extends FormRequest
 
             'name' => 'required|string',
             'email' => 'required|email',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
+            'photo'   => 'required|image'
         ];
     }
 }

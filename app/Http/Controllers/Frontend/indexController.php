@@ -27,6 +27,7 @@ class indexController extends Controller
     public function userRegistration(UserRegistration $request)
     {
 
+
         // New system validation process craete request class
 
 
@@ -44,7 +45,19 @@ class indexController extends Controller
         //     return redirect()->back()->withErrors($validator)->withInput();
         // }
 
+        $photo = $request->file('photo');
+
+        if ($photo->isValid()) {
+
+            $photo_name = rand(1111, 9999) . date('.d-m-y.') . $photo->getClientOriginalExtension();
+
+            $photo->storeAs('UserRegistrationImage', $photo_name);
+        }
+
         session()->flash('message', 'User Registration Successfully !..');
+
+
+
 
         return redirect()->back();
     }
