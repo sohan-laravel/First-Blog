@@ -1,11 +1,11 @@
 @extends('frontend.components.layouts')
 @section('title')
-    User Registration Form
+    User Login Form
 @endsection
 @section('content')
     <br>
     <div class="card">
-        <h5 class="card-header">User Registration Page</h5>
+        <h5 class="card-header">User Login Page</h5>
 
         <div class="card-body">
 
@@ -28,19 +28,12 @@
                 <div class="alert alert-{{ session('type') }}">{{ session('message') }}</div>
             @endif
 
-            <form action="{{ route('user.userRegistration') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('user.userLogin') }}" method="POST">
+
                 @csrf
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" value="{{ old('name') }}"
-                        class="form-control @error('name') is-invalid @enderror" placeholder="Enter Your Name">
-                    @error('name')
-                        <span class="text-danger font-italic">{{ $message }}</span>
-                    @enderror
-                </div>
 
                 <div class="form-group">
-                    <label for="name">Email</label>
+                    <label for="email">Email</label>
                     <input type="email" name="email" id="email" value="{{ old('email') }}"
                         class="form-control @error('email') is-invalid @enderror" placeholder="Enter Your Email">
                     @error('email')
@@ -57,21 +50,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="confirm_password">Confirm Password</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation"
-                    class="form-control" placeholder="Enter Your Confirm Password">
-                </div>
-
-                <div class="form-group">
-                    <label for="photo">Photo</label>
-                    <input type="file" name="photo" id="photo" class="form-control">
-                    @error('photo')
-                        <span class="text-danger font-italic">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
                 </div>
             </form>
         </div>

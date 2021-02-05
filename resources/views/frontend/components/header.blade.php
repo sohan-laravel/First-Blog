@@ -25,10 +25,27 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
+
+                @guest
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.showRegistrationForm') }}">Register</a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user.showLoginForm') }}">Login</a>
+                </li>
+                @endguest
+
+                @auth
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user.logout') }}">Logout</a>
+                    </li>
+                     <li class="nav-item">
+                     <a class="nav-link" href="#">{{ auth()->user()->name }}</a>
+                    </li>
+                @endauth
+
             </ul>
         </div>
     </div>
 </nav>
+            
